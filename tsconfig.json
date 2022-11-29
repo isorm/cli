@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "commonjs",
+    "moduleResolution": "Node",
+    "types": ["node", "jest"],
+    "rootDir": "src",
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "preserveSymlinks": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "typeRoots": ["./typings"]
+  },
+  "compileOnSave": true,
+  "files": ["typings/index.d.ts"],
+  "include": ["src", "typings/index.d.ts"],
+  "exclude": ["dist", "node_modules"]
+}

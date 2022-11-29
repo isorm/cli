@@ -1,0 +1,48 @@
+{
+  "name": "cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/cli.js",
+  "bin": {
+    "isorm": "./dist/cli.js"
+  },
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:watch": "nodemon build/cli.js",
+    "start": "concurrently npm:start:*",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isorm/isorm-cli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isorm/isorm-cli/issues"
+  },
+  "homepage": "https://github.com/isorm/isorm-cli#readme",
+  "dependencies": {
+    "chalk": "^5.1.2",
+    "express": "^4.18.2",
+    "fs-extra": "^11.0.0",
+    "isorm-core": "^1.1.0",
+    "ora": "^6.1.2",
+    "shelljs": "^0.8.5",
+    "yargs": "^17.6.2"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.3.1",
+    "@jest/types": "^29.3.1",
+    "@types/express": "^4.17.14",
+    "@types/fs-extra": "^9.0.13",
+    "@types/jest": "^29.2.3",
+    "@types/node": "^18.11.9",
+    "@types/shelljs": "^0.8.11",
+    "@types/yargs": "^17.0.14",
+    "jest": "^29.3.1",
+    "ts-jest": "^29.0.3"
+  }
+}

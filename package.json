@@ -1,6 +1,6 @@
 {
   "name": "@isorm/cli",
-  "version": "1.5.3",
+  "version": "1.6.0",
   "description": "",
   "main": "./dist/cli.js",
   "bin": {
@@ -25,7 +25,8 @@
     "url": "https://github.com/isorm/cli/issues"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/",
+    "access": "public"
   },
   "homepage": "https://github.com/isorm/cli#readme",
   "dependencies": {

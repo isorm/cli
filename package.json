@@ -1,6 +1,6 @@
 {
   "name": "@isorm/cli",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "",
   "main": "./dist/cli.js",
   "bin": {
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/isorm/cli#readme",
   "dependencies": {
-    "@isorm/core": "github:isorm/core",
+    "@isorm/core": "^1.2.0",
     "chalk": "^5.1.2",
     "express": "^4.18.2",
     "fs-extra": "^11.0.0",

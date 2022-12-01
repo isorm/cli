@@ -1,14 +1,15 @@
 {
   "name": "@isorm/cli",
-  "version": "1.3.1",
+  "version": "1.5.3",
   "description": "",
-  "main": "dist/cli.js",
+  "main": "./dist/cli.js",
   "bin": {
-    "isorm": "dist/cli.js"
+    "isorm": "./dist/cli.js"
   },
   "scripts": {
-    "start:build": "tsc -w",
-    "start:watch": "nodemon build/cli.js",
+    "watch": "tsc -w",
+    "start:build": "tsc",
+    "start:watch": "nodemon dist/cli.js",
     "start": "concurrently npm:start:*",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
@@ -29,10 +30,10 @@
   "homepage": "https://github.com/isorm/cli#readme",
   "dependencies": {
     "@isorm/core": "^1.2.0",
-    "chalk": "^5.1.2",
+    "chalk": "^4.1.2",
     "express": "^4.18.2",
     "fs-extra": "^11.0.0",
-    "ora": "^6.1.2",
+    "ora": "^5.4.0",
     "shelljs": "^0.8.5",
     "yargs": "^17.6.2"
   },

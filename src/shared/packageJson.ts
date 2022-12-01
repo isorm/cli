@@ -13,7 +13,7 @@ const packageJson = () => {
   packageJson.keywords = ["isorm"];
   packageJson.author = os.hostname();
   packageJson.scripts = {
-    dev: "NODE_ENV=development ts-node-dev --deps --clear --quiet src/app.ts",
+    dev: "ts-node-dev --deps --clear --quiet src/app.ts",
     build: "tsc",
   };
 

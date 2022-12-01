@@ -7,4 +7,5 @@ cli.scriptName("isorm");
 
 appCreate(cli);
 
+cli.argv;
 export default cli;

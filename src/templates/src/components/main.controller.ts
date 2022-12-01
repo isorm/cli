@@ -1,5 +1,5 @@
 import { Response } from "express";
-import { Controller, Get, Res } from "isorm-core";
+import { Controller, Get, Res } from "@isorm/core";
 import MainService from "./main.service";
 
 @Controller()

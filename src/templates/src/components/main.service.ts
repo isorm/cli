@@ -1,4 +1,4 @@
-import { Injectable } from "isorm-core";
+import { Injectable } from "@isorm/core";
 
 @Injectable
 class MainService {

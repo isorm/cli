@@ -1,4 +1,4 @@
-#! usr/bin/env node
+#! /usr/bin/env node
 
 import cli from "yargs";
 import appCreate from "./commands/app.create";

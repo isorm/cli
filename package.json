@@ -1,6 +1,6 @@
 {
   "name": "@isorm/cli",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "",
   "main": "./dist/cli.js",
   "bin": {
@@ -28,6 +28,7 @@
   "dependencies": {
     "@isorm/core": "^1.2.0",
     "chalk": "^4.1.2",
+    "chokidar": "^3.5.3",
     "express": "^4.18.2",
     "fs-extra": "^11.0.0",
     "ora": "^5.4.0",

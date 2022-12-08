@@ -10,11 +10,11 @@ const packageJson = () => {
   const packageJson = JSON.parse(data);
 
   packageJson.main = "build/src/app.js";
-  packageJson.keywords = ["isorm"];
+  packageJson.keywords = ["Isorm-project"];
   packageJson.author = os.hostname();
   packageJson.scripts = {
-    dev: "ts-node-dev --deps --clear --quiet src/app.ts",
-    build: "tsc",
+    dev: "isorm dev",
+    build: "isorm build",
   };
 
   fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 1));

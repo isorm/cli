@@ -1,6 +1,6 @@
 {
   "name": "@isorm/cli",
-  "version": "1.6.71",
+  "version": "1.7.0",
   "description": "",
   "main": "./dist/cli.js",
   "bin": {

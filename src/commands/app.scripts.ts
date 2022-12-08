@@ -10,6 +10,7 @@ import getConfigs from "../shared/getConfigs";
 import getTsConfigs from "../shared/getTsConfigs";
 import chokidar from "chokidar";
 import clearConsole from "../shared/clearConsole";
+import getFileSize from "../shared/getFileSize";
 
 const appScripts = (cli: Argv) => {
   cli.command(
@@ -27,6 +28,8 @@ const appScripts = (cli: Argv) => {
       const pkg = JSON.parse(
         fs.readFileSync(join(rootPath, "package.json"), "utf8"),
       );
+
+      await execSync("npx isorm build", { silent: true });
 
       const watcher = chokidar.watch(
         [
@@ -46,30 +49,47 @@ const appScripts = (cli: Argv) => {
         },
       );
 
-      const event = async () => {
-        clearConsole();
-        console.log(chalk.blueBright("+ Updating..."));
+      const event =
+        (showRunningMsg?: boolean, buildForce?: boolean) =>
+        async (path: string, stats: string) => {
+          await new Promise((res, rej) => {
+            setTimeout(async () => {
+              clearConsole();
+              console.log(chalk.gray("+ Updating..."));
+              if (buildUpdate) await execSync("tsc", { silent: true });
 
-        if (buildUpdate) await execSync("tsc", { silent: true });
+              if (configs?.type === "react") {
+                const format = configs?.react?.format || "tsx";
 
-        if (configs?.type === "react") {
-          const format = configs?.react?.format || "tsx";
+                try {
+                  await execSync(
+                    `npx esbuild ${root}/pages/index.${format} --bundle --minify --outfile=${root}/${tsConfig.compilerOptions.outDir}/bundle.js --loader:.js=${format}`,
+                    { silent: true },
+                  );
+                } catch (e) {}
+              }
 
-          try {
-            await execSync(
-              `npx esbuild ${root}/pages/index.${format} --bundle --minify --outfile=${root}/${tsConfig.compilerOptions.outDir}/bundle.js --loader:.js=${format}`,
-              { silent: true },
-            );
-          } catch (e) {}
-        }
+              if (showRunningMsg) {
+                clearConsole();
+                console.log(chalk.greenBright("+ App Running..."));
+              }
 
-        clearConsole();
-        console.log(chalk.greenBright("+ App Running"));
-      };
+              return res(true);
+            }, 100);
+          });
+        };
 
-      await event();
+      watcher.on("add", event(true));
+      watcher.on("addDir", event(true));
+      watcher.on("change", event());
+      watcher.on("error", event());
+      // watcher.on("raw", event());
+      watcher.on("unlink", event(true));
+      watcher.on("unlinkDir", event(true));
 
-      watcher.on("change", event);
+      watcher.on("ready", async (path: string, stats: string) => {
+        await event(true)(path, stats);
+      });
 
       await execSync(
         `npx ts-node-dev --clear --quiet ${join(rootPath, pkg.main).replace(
@@ -85,6 +105,8 @@ const appScripts = (cli: Argv) => {
     "Build isorm project",
     () => {},
     async (args) => {
+      const hideChanges = args?.hideChanges || args?.h || "";
+
       const rootPath = pwd().stdout;
       const tsConfig = await getTsConfigs(rootPath);
       const configs = await getConfigs(rootPath);
@@ -107,7 +129,19 @@ const appScripts = (cli: Argv) => {
       }
 
       clearConsole();
-      console.log(chalk.blueBright("+ Build Successfully"));
+      if (!hideChanges) {
+        console.log(chalk.greenBright(`+ Build Successfully`));
+        console.log(
+          `\n${getFileSize()
+            .map(
+              (item) =>
+                `${chalk.dim(chalk.cyan(item.file))} ${chalk.bold(
+                  chalk.gray(item.size),
+                )}`,
+            )
+            .join("\n")}`,
+        );
+      } else console.log(chalk.greenBright("+ Build Successfully"));
     },
   );
 };

@@ -9,7 +9,7 @@ const packageJson = () => {
 
   const packageJson = JSON.parse(data);
 
-  packageJson.main = "src/app.ts";
+  packageJson.main = "build/src/app.js";
   packageJson.keywords = ["isorm"];
   packageJson.author = os.hostname();
   packageJson.scripts = {

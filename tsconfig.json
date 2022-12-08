@@ -19,6 +19,6 @@
   },
   "compileOnSave": true,
   "files": ["typings/index.d.ts"],
-  "include": ["src", "typings/index.d.ts","src/**/*.json"],
+  "include": ["src", "typings/index.d.ts"],
   "exclude": ["dist", "node_modules"]
 }

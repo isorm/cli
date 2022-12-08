@@ -1,6 +1,6 @@
 {
   "name": "@isorm/cli",
-  "version": "1.6.1",
+  "version": "1.6.71",
   "description": "",
   "main": "./dist/cli.js",
   "bin": {
@@ -27,12 +27,16 @@
   "homepage": "https://github.com/isorm/cli#readme",
   "dependencies": {
     "@isorm/core": "^1.2.0",
+    "@poppinss/chokidar-ts": "^3.3.5",
     "chalk": "^4.1.2",
     "chokidar": "^3.5.3",
+    "esbuild": "^0.15.18",
     "express": "^4.18.2",
     "fs-extra": "^11.0.0",
     "ora": "^5.4.0",
     "shelljs": "^0.8.5",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
     "yargs": "^17.6.2"
   },
   "devDependencies": {

@@ -63,7 +63,7 @@ const appScripts = (cli: Argv) => {
 
                 try {
                   await execSync(
-                    `npx esbuild ${root}/pages/index.${format} --bundle --minify --outfile=${root}/${tsConfig.compilerOptions.outDir}/bundle.js --loader:.js=${format}`,
+                    `npx esbuild ${root}/pages/index.${format} --bundle --minify --keep-names --outfile=${root}/${tsConfig.compilerOptions.outDir}/bundle.js --loader:.js=${format}`,
                     { silent: true },
                   );
                 } catch (e) {}

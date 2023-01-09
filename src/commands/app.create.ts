@@ -16,6 +16,8 @@ const appCreate = (cli: Argv) => {
     "Create Framework Template",
     (yargs) => {},
     async (args) => {
+      const withReact = args?.react || ""
+
       const appName = ((args?.app_name as string) ?? "").trim();
 
       //   if (appName === ".") {
@@ -58,6 +60,8 @@ const appCreate = (cli: Argv) => {
       console.log(chalk.blueBright("Project was created successfully :)"));
     },
   );
+
+
 };
 
 export default appCreate;

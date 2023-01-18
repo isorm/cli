@@ -19,7 +19,7 @@
     "typeRoots": ["./typings"]
   },
   "compileOnSave": true,
-  "files": ["typings/index.d.ts"],
-  "include": ["src", "typings/index.d.ts"],
+  "files": ["./index.d.ts"],
+  "include": ["src", "./index.d.ts"],
   "exclude": ["dist", "node_modules"]
 }
